@@ -1,5 +1,5 @@
 # IEEE-Embedded-WS: Microcontroller Architecture and Interfacing with ARM Cortex
-### This Workshop was supported by IEEE and Eng. [Mahmoud Abdelraouf](https://github.com/Mahmoud-Abdelraouf) is the instroctor.
+### This Workshop was supported by IEEE and Eng. [Mahmoud Abdelraouf](https://github.com/Mahmoud-Abdelraouf) is the instructor.
 
 <br />
 
