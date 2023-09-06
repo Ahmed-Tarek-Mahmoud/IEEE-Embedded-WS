@@ -116,8 +116,15 @@
 
 #define RCC_CFGR_SW0        0    /**< 1st bit of the System clock Switch*/
 #define RCC_CFGR_SW1        1    /**< 2nd bit of the System clock Switch*/
+#define RCC_CFGR_AHB_LSB    4    /**< AHB Least Significant Bit */
+#define RCC_CFGR_AHB_MSB    7    /**< AHB Most Significant Bit */
+#define RCC_CFGR_APB1_LSB   8    /**< APB1 Least Significant Bit */
+#define RCC_CFGR_APB1_MSB   10   /**< APB1 Most Significant Bit */
+#define RCC_CFGR_APB2_LSB   11   /**< APB2 Least Significant Bit */
+#define RCC_CFGR_APB2_MSB   13   /**< APB2 Most Significant Bit */
 #define RCC_CFGR_PLLSRC     16   /**< PLL entry clock source */
 #define RCC_CFGR_PLLXTPRE   17   /**< HSE divider for PLL entry */
+#define RCC_CFGR_USBPRE     22   /**< USB prescaler */
 
 /** @} */ // end of RCC_CFGR_Bit_Definitions
 
@@ -153,8 +160,17 @@
 /** @} */ // end of PLL HSE Divider Macros
 
 
+#define FLASH_ACR  (*((volatile u32 *)0x40022000))  /***< Flash access control register */
 
+/**
+ * @defgroup  Flash access control register Bits Definitions
+ * @{
+ */
 
+#define FLASH_ACR_LAT_LSB       0      /***< Latency Least Significant Bit */
+#define FLASH_ACR_PRFTBE       4      /***< Prefetch buffer enable */
+
+/** @} */ // end of Flash access control register Bits Definitions
 
 
 #endif  /* RCC_private.h */
