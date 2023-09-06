@@ -5,8 +5,8 @@
 /******* Module    : RCC_config.c               *****************/
 /****************************************************************/
 
-#ifndef RCC_PROGRAM_H
-#define RCC_PROGRAM_H
+#ifndef RCC_CONFIG_H
+#define RCC_CONFIG_H
 
 /**
  * your options for the system clock    RCC_HSI
@@ -55,4 +55,4 @@
   #endif /**RCC_PLL_INPUT == RCC_PLL_HSI*/
 #endif /*RCC_CLKSYS == RCC_PLL*/
 
-#endif /* RCC_program.c */
+#endif /* RCC_config.h */

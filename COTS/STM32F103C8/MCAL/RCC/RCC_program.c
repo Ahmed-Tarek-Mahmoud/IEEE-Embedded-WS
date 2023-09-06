@@ -117,7 +117,7 @@ Std_ReturnType MCAL_RCC_InitSysClock()
               #if PLL_MulFactor > 7     
                /** AHB prescaler */
                    RCC_CFGR &= ~((0b1111)<< RCC_CFGR_AHB_LSB);
-                   RCC_CFGR |= (1000<< RCC_CFGR_AHB_LSB);
+                   RCC_CFGR |= ((0b1000)<< RCC_CFGR_AHB_LSB);
                    /** prefetch buffer must be On */
                    SET_BIT(FLASH_ACR,FLASH_ACR_PRFTBE);
                    /** setting latency */
@@ -128,7 +128,7 @@ Std_ReturnType MCAL_RCC_InitSysClock()
                     #elif PLL_MulFactor < 10
                     /** One wait state */
                          FLASH_ACR &= ~((0b111)<< FLASH_ACR_LAT_LSB);
-                         FLASH_ACR |= (001<< FLASH_ACR_LAT_LSB);    
+                         FLASH_ACR |= ((0b001)<< FLASH_ACR_LAT_LSB);    
                     #else
                       /** Two wait states */
                          FLASH_ACR &= ~((0b111)<< FLASH_ACR_LAT_LSB);
@@ -137,7 +137,7 @@ Std_ReturnType MCAL_RCC_InitSysClock()
 
                /** APB2 prescaler */
                    RCC_CFGR &= ~((0b111)<< RCC_CFGR_APB2_LSB);
-                   RCC_CFGR |= (100<< RCC_CFGR_APB2_LSB);
+                   RCC_CFGR |= ((0b100)<< RCC_CFGR_APB2_LSB);
               #else
                 /** AHB prescaler -> Not divided */
                CLR_BIT(RCC_CFGR,RCC_CFGR_AHB_MSB);   
@@ -153,7 +153,7 @@ Std_ReturnType MCAL_RCC_InitSysClock()
                #elif PLL_MulFactor > 7
                    /** APB1 prescaler -> divide by 4 */
                   RCC_CFGR &= ~((0b111)<< RCC_CFGR_APB1_LSB);
-                  RCC_CFGR |= (101<< RCC_CFGR_APB1_LSB);
+                  RCC_CFGR |= ((0b101)<< RCC_CFGR_APB1_LSB);
                #else
                   /** APB1 prescaler -> No divide */
                   CLR_BIT(RCC_CFGR,RCC_CFGR_APB1_MSB);
@@ -165,7 +165,7 @@ Std_ReturnType MCAL_RCC_InitSysClock()
                /** read the multiplication factor */
                #if PLL_MulFactor > 7      /** APB1 prescaler */
                   RCC_CFGR &= ~((0b111)<< RCC_CFGR_APB1_LSB);
-                  RCC_CFGR |= (100<< RCC_CFGR_APB1_LSB);
+                  RCC_CFGR |= ((0b100)<< RCC_CFGR_APB1_LSB);
                 #else
                   CLR_BIT(RCC_CFGR,RCC_CFGR_APB1_MSB);
                #endif /** PLL_MulFactor */
