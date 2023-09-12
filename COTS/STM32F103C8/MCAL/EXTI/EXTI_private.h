@@ -22,5 +22,24 @@ typedef struct
 
 #define EXTI    ((EXTI_RegDef_t *)(EXTI_BASE_ADDRESS))
 
+/**< Total number of EXTI lines available */
+#define EXTI_LINES_COUNT        16
+
+/**< EXTI line enabled */
+#define EXTI_LINE_ENABLED       1
+
+/**< EXTI line disabled */
+#define EXTI_LINE_DISABLED      0
+
+/**< EXTI Configuration Structure */
+typedef struct 
+{
+    u8 LineEnabled: 1;      /**< EXTI line enabled or disabled (1 or 0) */
+    u8 TriggerType: 2;      /**< Trigger type (EXTI_TRIGGER_RISING, EXTI_TRIGGER_FALLING, EXTI_TRIGGER_BOTH, etc.) */
+    u8 : 5;                 /**< 5 bits of padding */
+} EXTI_Configuration;
+
+/**< EXTI line configuration settings */
+extern EXTI_Configuration EXTI_Configurations[EXTI_LINES_COUNT];
 
 #endif /**< EXTI_PRIVATE_H*/

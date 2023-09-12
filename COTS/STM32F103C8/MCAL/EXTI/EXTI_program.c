@@ -17,7 +17,43 @@
 
 Std_ReturnType EXTI_Init(void)
 {
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
+    for (u8 Line = 0; Line < EXTI_LINES_COUNT; Line++)
+    {
+        if (EXTI_Configurations[Line].LineEnabled == EXTI_LINE_ENABLED)
+        {
+            EXTI->EXTI_IMR |= (1 << Line);  /**< Enable the EXTI line */ 
+            switch (EXTI_Configurations[Line].TriggerType)
+            {
+            /**< Configure rising edge trigger */
+            case EXTI_RISING_EDGE:          
+                SET_BIT(EXTI->EXTI_RTSR, Line);
+                CLR_BIT(EXTI->EXTI_FTSR, Line);
+                break;
+            /**< Configure falling edge trigger */ 
+            case EXTI_FALLING_EDGE:
+                CLR_BIT(EXTI->EXTI_RTSR, Line);
+                SET_BIT(EXTI->EXTI_FTSR, Line);
+                break;
+            /**< Configure both edges trigger */
+            case EXTI_BOTH_EDGES:
+                SET_BIT(EXTI->EXTI_RTSR, Line);
+                SET_BIT(EXTI->EXTI_FTSR, Line);
+                break;
+            }
+            Local_FunctionStatus = E_OK;
+        }
+        else if (EXTI_Configurations[Line].LineEnabled == EXTI_LINE_DISABLED)
+        {
+            EXTI->EXTI_IMR &= ~(1 << Line);  /**< Disable the EXTI line */ 
+        }else
+        {
+            Local_FunctionStatus = E_NOT_OK;
+        }
+    }
+
+    return Local_FunctionStatus;
 }
 
 Std_ReturnType EXTI_Enable(u8 Copy_Line)
@@ -59,7 +95,7 @@ Std_ReturnType EXTI_SetPinTriggger(u8 Copy_Line, u8 Copy_Mode)
          Local_FunctionStatus = E_OK;
         break;
 
-    case EXTI_BOTH_EDGE:
+    case EXTI_BOTH_EDGES:
         
         SET_BIT(EXTI->EXTI_RTSR,Copy_Line);
         SET_BIT(EXTI->EXTI_FTSR,Copy_Line);
