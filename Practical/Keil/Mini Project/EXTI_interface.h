@@ -47,6 +47,16 @@
 
 /** @} */  // End Of EXTI Configurations
 
+/**
+ * @name EXTI Port Mapping
+ * @{
+ */
+#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
+#define EXTI_PORTMAP_GPIOA  0 /**< Map EXTI line to GPIO Port A. */
+#define EXTI_PORTMAP_GPIOB  1 /**< Map EXTI line to GPIO Port B. */
+#define EXTI_PORTMAP_GPIOC  2 /**< Map EXTI line to GPIO Port C. */
+/** @} */
+
 Std_ReturnType EXTI_Init(void);
 
 Std_ReturnType EXTI_EnableLine(u8 Copy_Line);

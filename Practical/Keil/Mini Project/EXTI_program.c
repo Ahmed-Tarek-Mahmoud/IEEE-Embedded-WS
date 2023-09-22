@@ -50,11 +50,16 @@ Std_ReturnType EXTI_Init(void)
                 SET_BIT(EXTI->EXTI_FTSR, Line);
                 break;
             }
+
+             /**< Enable EXTI line for the specified GPIO pin */ 
+            AFIO_SetEXTIConfiguration(Line, EXTI_Configurations[Line].GPIO_PortMap);
+
             Local_FunctionStatus = E_OK;
         }
         else if (EXTI_Configurations[Line].LineEnabled == EXTI_LINE_DISABLED)
         {
             EXTI->EXTI_IMR &= ~(1 << Line);  /**< Disable the EXTI line */ 
+            Local_FunctionStatus = E_OK;
         }else
         {
             Local_FunctionStatus = E_NOT_OK;
@@ -117,4 +122,15 @@ Std_ReturnType EXTI_SetPinTriggger(u8 Copy_Line, u8 Copy_Mode)
     return Local_FunctionStatus;
 }
 
+void (*ptr)() = NULL;
+
+void EXTI_SetCallBack(void (*pf)(void))
+{
+    ptr = pf; 
+}
+
+void EXTI0_IRQHandler(void)
+{
+    ptr();
+}
 /*****************************< End Of Function Implementations *************************/
