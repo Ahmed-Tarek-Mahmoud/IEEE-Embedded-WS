@@ -1,5 +1,5 @@
 /****************************************************************/
-/***    **** Author    : Ahmed Tarek Mahmoud        *****************/
+/******* Author    : Ahmed Tarek Mahmoud        *****************/
 /******* Date      : 17 Sept 2023               *****************/
 /******* Version   : 0.1                        *****************/
 /******* Module    : MiniProject.c              *****************/
@@ -174,7 +174,7 @@ void ButtonPressed(void) {
         PassGo();
      }else
      {
-        main();
+       Reset_Handler();
         return;
      }
      // 	 -------------->>>>>>> At the end of the two states  <<<<<<------------------
@@ -187,7 +187,7 @@ void ButtonPressed(void) {
      CarGo();
      MCAL_GPIO_SetPinValue(GPIO_PORTA,GPIO_PIN3,GPIO_LOW); // GREEN LED FOR CARS
      MCAL_GPIO_SetPinValue(GPIO_PORTA,GPIO_PIN4,GPIO_LOW); // RED LED FOR PEDESTRIANS
-     main();
+     Reset_Handler();
    }
-   
+ 
 }

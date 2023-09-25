@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\Mini project testing.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Mini project testing.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Thu Sep 21 23:38:11 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Mon Sep 25 16:52:31 2023
 <BR><P>
-<H3>Maximum Stack Usage =        144 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        112 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-ButtonPressed &rArr; main &rArr; Yellow &rArr; STK_SetDelay_ms &rArr; __aeabi_dmul
+ButtonPressed &rArr; Yellow &rArr; STK_SetDelay_ms &rArr; __aeabi_dmul
 <P>
 <H3>
 Functions with no stack information
@@ -230,6 +230,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ButtonPressed
+</UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
@@ -473,15 +475,15 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[37]"></a>ButtonPressed</STRONG> (Thumb, 212 bytes, Stack size 32 bytes, main.o(.text.ButtonPressed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = ButtonPressed &rArr; main &rArr; Yellow &rArr; STK_SetDelay_ms &rArr; __aeabi_dmul
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = ButtonPressed &rArr; Yellow &rArr; STK_SetDelay_ms &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MCAL_GPIO_GetPinValue
+<BR>[Calls]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_Handler
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MCAL_GPIO_GetPinValue
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STK_SetDelay_ms
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PassGo
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Yellow
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MCAL_GPIO_SetPinValue
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CarGo
-<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.main)
 </UL>
@@ -633,7 +635,6 @@ Global Symbols
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MCAL_RCC_InitSysClock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
-<LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ButtonPressed
 </UL>
 
 <P><STRONG><a name="[56]"></a>__aeabi_d2uiz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfixu.o(x$fpl$dfixu))
